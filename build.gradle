@@ -1,3 +1,7 @@
+/* This file is part of Cebolla, licensed under the GNU GPL v3. See COPYING for details.
+ * Copyright 2014 Bradford Hovinen <hovinen@gmail.com>
+ */
+
 apply plugin: 'java'
 apply plugin: 'eclipse'
 
@@ -33,4 +37,5 @@ dependencies {
     compile 'junit:junit:4.11'
     compile 'org.hamcrest:hamcrest-all:1.3'
     compile 'com.google.guava:guava:18.0'
+    compile 'org.reflections:reflections:0.9.9-RC1'
 }
