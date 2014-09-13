@@ -36,7 +36,7 @@ public class AbstractFakeRepositoryWithSimpleLookup<Key, EntityType extends Enti
 	}
     }
 
-    public Optional<EntityType> lookup(final Key key) {
+    public Optional<EntityType> lookup(Key key) {
 	keysLookedUp.add(key);
 
 	for (EntityType entity : filter(new KeyMatchPredicate(key))) {
