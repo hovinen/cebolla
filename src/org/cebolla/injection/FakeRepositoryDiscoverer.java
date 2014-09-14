@@ -5,6 +5,7 @@
 package org.cebolla.injection;
 
 import java.lang.reflect.Field;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,6 +13,7 @@ import org.cebolla.annotations.FakeRepository;
 import org.cebolla.annotations.InjectFakeRepository;
 import org.cebolla.annotations.InjectRepositories;
 import org.reflections.Reflections;
+import org.reflections.ReflectionsException;
 
 import com.google.common.base.Optional;
 import com.google.common.base.Throwables;
@@ -84,14 +86,13 @@ public class FakeRepositoryDiscoverer {
 	}
     }
 
-    @SuppressWarnings("unchecked")
     private Class<?> getRepositoryClass(Class<?> repositoryInterface) {
 	if (repositoryInterface.isAnnotationPresent(FakeRepository.class)) {
 	    return repositoryInterface;
 	}
 
-	Set<Class<?>> candidates = (Set<Class<?>>) (Object) REFLECTIONS
-		.getSubTypesOf(repositoryInterface);
+	Set<Class<?>> candidates = findCandidates(repositoryInterface);
+
 	Set<Class<?>> filteredCandidates = new HashSet<>();
 	for (Class<?> candidate : candidates) {
 	    if (candidate.isAnnotationPresent(FakeRepository.class)) {
@@ -107,6 +108,16 @@ public class FakeRepositoryDiscoverer {
 			    + repositoryInterface + ": " + filteredCandidates);
 	} else {
 	    return Iterables.getOnlyElement(filteredCandidates);
+	}
+    }
+
+    @SuppressWarnings("unchecked")
+    private Set<Class<?>> findCandidates(Class<?> repositoryInterface) {
+	try {
+	    return (Set<Class<?>>) (Object) REFLECTIONS
+	    	.getSubTypesOf(repositoryInterface);
+	} catch (ReflectionsException ignored) {
+	    return Collections.emptySet();
 	}
     }
 }
