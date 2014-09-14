@@ -21,13 +21,12 @@ import com.google.common.collect.Iterables;
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
 public class FakeRepositoryDiscoverer {
-    private final Reflections reflections;
+    private static final Reflections REFLECTIONS = new Reflections();
 
     private final RepositoryRegister register;
 
     public FakeRepositoryDiscoverer(RepositoryRegister register) {
 	this.register = register;
-	this.reflections = new Reflections();
     }
 
     public void scanTarget(Object target) {
@@ -91,7 +90,7 @@ public class FakeRepositoryDiscoverer {
 	    return repositoryInterface;
 	}
 
-	Set<Class<?>> candidates = (Set<Class<?>>) (Object) reflections
+	Set<Class<?>> candidates = (Set<Class<?>>) (Object) REFLECTIONS
 		.getSubTypesOf(repositoryInterface);
 	Set<Class<?>> filteredCandidates = new HashSet<>();
 	for (Class<?> candidate : candidates) {
