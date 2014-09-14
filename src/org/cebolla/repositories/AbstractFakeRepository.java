@@ -36,7 +36,7 @@ public class AbstractFakeRepository<EntityType> {
 	entities.remove(entity);
     }
 
-    protected Iterable<EntityType> filter(
+    public Iterable<EntityType> filter(
 	    Predicate<? super EntityType> predicate) {
 	return Iterables.filter(entities, predicate);
     }
