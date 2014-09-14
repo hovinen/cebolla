@@ -2,17 +2,17 @@
  * Copyright 2014 Bradford Hovinen <hovinen@gmail.com>
  */
 
-package org.cebolla.rules;
+package org.cebolla.rules.entities;
 
 import org.cebolla.entities.EntityWithKey;
 
 /**
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
-public class TestEntity3 implements EntityWithKey<String> {
+public class TestEntity2 implements EntityWithKey<String> {
     private final String id;
 
-    public TestEntity3(String id) {
+    public TestEntity2(String id) {
 	this.id = id;
     }
 
@@ -20,4 +20,5 @@ public class TestEntity3 implements EntityWithKey<String> {
     public String getKey() {
 	return id;
     }
+
 }

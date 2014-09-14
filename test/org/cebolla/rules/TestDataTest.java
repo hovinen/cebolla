@@ -9,6 +9,16 @@ import static org.junit.Assert.*;
 
 import org.cebolla.annotations.InjectFakeRepository;
 import org.cebolla.annotations.InjectRepositories;
+import org.cebolla.rules.entities.TestEntity;
+import org.cebolla.rules.entities.TestEntity2;
+import org.cebolla.rules.entities.TestEntity3;
+import org.cebolla.rules.entities.TestValueObject;
+import org.cebolla.rules.fakes.FakeTestRepository;
+import org.cebolla.rules.fakes.FakeTestRepository2;
+import org.cebolla.rules.fakes.FakeTestRepository3;
+import org.cebolla.rules.injectees.TestBean;
+import org.cebolla.rules.repositories.TestRepository;
+import org.cebolla.rules.repositories.TestRepository2;
 import org.junit.Rule;
 import org.junit.Test;
 

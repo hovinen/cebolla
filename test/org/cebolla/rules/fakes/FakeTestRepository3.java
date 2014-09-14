@@ -2,21 +2,19 @@
  * Copyright 2014 Bradford Hovinen <hovinen@gmail.com>
  */
 
-package org.cebolla.rules;
+package org.cebolla.rules.fakes;
 
 import org.cebolla.annotations.FakeRepository;
 import org.cebolla.repositories.AbstractFakeRepositoryWithSimpleLookup;
+import org.cebolla.rules.entities.TestEntity3;
+import org.cebolla.rules.repositories.TestRepository3;
 
 /**
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
-@FakeRepository({ TestEntity2.class })
-public class FakeTestRepository2 extends
-	AbstractFakeRepositoryWithSimpleLookup<String, TestEntity2>
-	implements TestRepository2 {
+@FakeRepository({ TestEntity3.class })
+public class FakeTestRepository3 extends
+	AbstractFakeRepositoryWithSimpleLookup<String, TestEntity3> implements
+	TestRepository3 {
 
-    public FakeTestRepository2 with(TestEntity2 entity) {
-	add(entity);
-	return this;
-    }
 }

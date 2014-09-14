@@ -2,13 +2,16 @@
  * Copyright 2014 Bradford Hovinen <hovinen@gmail.com>
  */
 
-package org.cebolla.rules;
+package org.cebolla.rules.fakes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.cebolla.annotations.FakeRepository;
 import org.cebolla.repositories.AbstractFakeRepositoryWithSimpleLookup;
+import org.cebolla.rules.entities.TestEntity;
+import org.cebolla.rules.entities.TestValueObject;
+import org.cebolla.rules.repositories.TestRepository;
 
 import com.google.common.collect.ImmutableList;
 

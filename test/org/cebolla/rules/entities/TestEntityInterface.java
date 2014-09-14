@@ -2,11 +2,11 @@
  * Copyright 2014 Bradford Hovinen <hovinen@gmail.com>
  */
 
-package org.cebolla.rules;
+package org.cebolla.rules.entities;
 
 /**
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
-public class TestValueObject {
-
+public interface TestEntityInterface {
+    String getKey();
 }
