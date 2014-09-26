@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.cebolla.Cebolla;
 import org.cebolla.annotations.FakeRepository;
 import org.cebolla.annotations.InjectFakeRepository;
 import org.cebolla.annotations.InjectRepositories;
@@ -23,12 +24,12 @@ import com.google.common.collect.Iterables;
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
 public class FakeRepositoryDiscoverer {
-    private static final Reflections REFLECTIONS = new Reflections();
-
+    private final Reflections reflections;
     private final RepositoryRegister register;
 
     public FakeRepositoryDiscoverer(RepositoryRegister register) {
 	this.register = register;
+	this.reflections = Cebolla.createReflections();
     }
 
     public void scanTarget(Object target) {
@@ -114,7 +115,7 @@ public class FakeRepositoryDiscoverer {
     @SuppressWarnings("unchecked")
     private Set<Class<?>> findCandidates(Class<?> repositoryInterface) {
 	try {
-	    return (Set<Class<?>>) (Object) REFLECTIONS
+	    return (Set<Class<?>>) (Object) reflections
 	    	.getSubTypesOf(repositoryInterface);
 	} catch (ReflectionsException ignored) {
 	    return Collections.emptySet();
