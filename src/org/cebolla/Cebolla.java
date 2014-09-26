@@ -6,6 +6,11 @@ public class Cebolla {
     private static String fakeRepositoryPackage;
     private static Reflections reflections;
 
+    static {
+	fakeRepositoryPackage = System
+		.getProperty("cebolla.repository.package");
+    }
+
     public static void setFakeRepositoryPackage(String fakeRepositoryPackage) {
 	Cebolla.fakeRepositoryPackage = fakeRepositoryPackage;
 	reflections = null;
