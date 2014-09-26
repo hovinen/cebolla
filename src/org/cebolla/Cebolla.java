@@ -3,12 +3,16 @@ package org.cebolla;
 import org.reflections.Reflections;
 
 public class Cebolla {
-    private static Package fakeRepositoryPackage;
+    private static String fakeRepositoryPackage;
     private static Reflections reflections;
 
-    public static void setFakeRepositoryPackage(Package fakeRepositoryPackage) {
+    public static void setFakeRepositoryPackage(String fakeRepositoryPackage) {
 	Cebolla.fakeRepositoryPackage = fakeRepositoryPackage;
 	reflections = null;
+    }
+
+    public static void setFakeRepositoryPackage(Package fakeRepositoryPackage) {
+	setFakeRepositoryPackage(fakeRepositoryPackage.getName());
     }
 
     public static Reflections createReflections() {
@@ -16,7 +20,7 @@ public class Cebolla {
 	    if (fakeRepositoryPackage == null) {
 	        reflections = new Reflections();
 	    } else {
-	        reflections = new Reflections(fakeRepositoryPackage.getName());
+		reflections = new Reflections(fakeRepositoryPackage);
 	    }
 	}
 
