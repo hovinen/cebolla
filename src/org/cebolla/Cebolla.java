@@ -4,16 +4,22 @@ import org.reflections.Reflections;
 
 public class Cebolla {
     private static Package fakeRepositoryPackage;
+    private static Reflections reflections;
 
     public static void setFakeRepositoryPackage(Package fakeRepositoryPackage) {
 	Cebolla.fakeRepositoryPackage = fakeRepositoryPackage;
+	reflections = null;
     }
 
     public static Reflections createReflections() {
-	if (fakeRepositoryPackage == null) {
-	    return new Reflections();
-	} else {
-	    return new Reflections(fakeRepositoryPackage.getName());
+	if (reflections == null) {
+	    if (fakeRepositoryPackage == null) {
+	        reflections = new Reflections();
+	    } else {
+	        reflections = new Reflections(fakeRepositoryPackage.getName());
+	    }
 	}
+
+	return reflections;
     }
 }
