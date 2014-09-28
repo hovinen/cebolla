@@ -16,6 +16,11 @@ import com.google.common.reflect.Invokable;
 import com.google.common.reflect.TypeToken;
 
 /**
+ * Base class for fake repositories
+ * 
+ * This is a convenient base class to implement fake repositories. Fake
+ * repositories can inherit from it to reduce boilerplate.
+ * 
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
 public class AbstractFakeRepository<EntityType> {
@@ -28,19 +33,34 @@ public class AbstractFakeRepository<EntityType> {
 
     private final List<EntityType> entities = new ArrayList<>();
 
+    /**
+     * Add an entity to the repository.
+     */
     public void add(EntityType entity) {
 	entities.add(entity);
     }
 
+    /**
+     * Remove the given entry from the repository.
+     * 
+     * If the entity is not present, take no action.
+     */
     public void remove(EntityType entity) {
 	entities.remove(entity);
     }
 
+    /**
+     * Filter all existing entries in the repository with the given predicate
+     * and return the filtered entries in an @see java.lang.Iterable.
+     */
     public Iterable<EntityType> filter(
 	    Predicate<? super EntityType> predicate) {
 	return Iterables.filter(entities, predicate);
     }
 
+    /**
+     * For internal use only
+     */
     @SuppressWarnings("serial")
     public Class<?> getEntityType() {
 	TypeToken<AbstractFakeRepository<EntityType>> token = new TypeToken<AbstractFakeRepository<EntityType>>(
@@ -65,6 +85,9 @@ public class AbstractFakeRepository<EntityType> {
 	}
     }
 
+    /**
+     * Return all entries in the repository
+     */
     public ImmutableList<EntityType> fetchAll() {
 	return ImmutableList.copyOf(filter(ALWAYS_TRUE));
     }

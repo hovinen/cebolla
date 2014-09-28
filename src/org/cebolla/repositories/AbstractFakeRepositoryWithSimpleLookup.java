@@ -17,6 +17,8 @@ import com.google.common.base.Optional;
 import com.google.common.base.Predicate;
 
 /**
+ * This class extends @see AbstractFakeRepository with a simple lookup-method
+ * 
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
 public class AbstractFakeRepositoryWithSimpleLookup<Key, EntityType extends EntityWithKey<Key>>
@@ -36,6 +38,11 @@ public class AbstractFakeRepositoryWithSimpleLookup<Key, EntityType extends Enti
 	}
     }
 
+    /**
+     * Find an entity with the given key in the repository
+     * 
+     * @return an @see com.google.common.base.Optional of the entity, if found. Otherwise Optional.absent()
+     */
     public Optional<EntityType> lookup(Key key) {
 	keysLookedUp.add(key);
 
@@ -46,11 +53,24 @@ public class AbstractFakeRepositoryWithSimpleLookup<Key, EntityType extends Enti
 	return Optional.absent();
     }
 
+    /**
+     * Assert that the @see lookup was called on the given key.
+     */
     @SuppressWarnings("unchecked")
     public void assertKeyLookedUp(Key key) {
 	assertThat(keysLookedUp, contains(key));
     }
 
+    /**
+     * Clear the record of on which keys @see lookup was called.
+     * 
+     * Thus the following will cause a test to fail:
+     * <code>
+     *   repository.lookup("abc");
+     *   repository.clearLookupRecords();
+     *   repository.assertKeyWasLookedUp("abc"); // Fail here
+     * </code>
+     */
     public void clearLookupRecords() {
 	keysLookedUp.clear();
     }

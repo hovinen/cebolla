@@ -17,6 +17,12 @@ import org.junit.runners.model.FrameworkMethod;
 import org.junit.runners.model.Statement;
 
 /**
+ * Specify test-data to be injected.
+ * 
+ * This rule must be included in the test-class in order that Cebolla
+ * inject repositories in either the test-class or the class under
+ * test.
+ * 
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
 public class TestData implements MethodRule {
@@ -30,6 +36,15 @@ public class TestData implements MethodRule {
     private final List<Object> toBeAdded = new ArrayList<>();
     private boolean testRunning = false;
 
+    /**
+     * Include the given entity among the test-data
+     * 
+     * The given entity is then injected to all fake repositories which
+     * whose annotation includes a superclass or interface thereof among
+     * its parameters.
+     * 
+     * @return this
+     */
     public TestData with(Object entity) {
 	if (testRunning) {
 	    add(entity);
@@ -39,6 +54,14 @@ public class TestData implements MethodRule {
 	return this;
     }
 
+    /**
+     * Include all entities built by the given builder in the test-data
+     * 
+     * This invokes the builder and injects the resulting entity and all
+     * dependencies thereof using the same method as the method @see with.
+     * 
+     * @return this
+     */
     public <Value> TestData with(EntityBuilder<Value> builder) {
 	for (Object entity : builder.buildEntityList()) {
 	    with(entity);
@@ -53,6 +76,15 @@ public class TestData implements MethodRule {
 	}
     }
 
+    /**
+     * Remove the given entity from the test-data
+     * 
+     * Removes the entity from all fake repositories into which it was
+     * injected. This requires that all relevant fake repositories
+     * include a method <code>remove</code> which does the actual
+     * removal. The method must take exactly one parameter of a type
+     * inherited by the entity to be removed.
+     */
     public void remove(Object entity) {
 	for (Object repository : register.getRepositoriesForDataClass(entity
 		.getClass())) {
@@ -60,6 +92,9 @@ public class TestData implements MethodRule {
 	}
     }
 
+    /**
+     * @see MethodRule.apply
+     */
     @Override
     public Statement apply(final Statement statement, FrameworkMethod method,
 	    final Object target) {
