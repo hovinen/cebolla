@@ -5,7 +5,8 @@ Cebolla is a framework for injecting test-data into repositories. It consists of
  - a JUnit-rule with which to specify test-data, and
  - a set of annotations with which to identify repositories.
 
-Background
+Introduction
+============
 
 Say you have an application with some business-logic. The logic works with domain-objects (also known as entities) which are managed by some sort of repository, as in the following example.
 
@@ -189,16 +190,18 @@ The base-class AbstractFakeRepositoryWithSimpleLookup handles only the type whos
 It is genenerally recommended not to have more than one domain object for each repository. Having more than one domain-object for a given repository may, however, make sense when the two types are closely related.
 
 Finding fake repositories
+=========================
 
 By default, Cebolla searches the entire classpath for classes with the annotation @FakeRepository, then checks the given list of classes for which domain-objects the fake repository accepts and injects the data with the method add. Searching the whole classpath is often quite slow and not really necessary in most cases. Thus Cebolla offers the ability to restrict the search to subpackages of a given package. One can specify this via a static method:
 
-Cebolla.setFakeRepositoryPackage(<package name>);
+    Cebolla.setFakeRepositoryPackage(/package name/);
 
 or via the property cebolla.repository.package:
 
--Dcebolla.repository.package=<package name>
+    -Dcebolla.repository.package=/package name/
 
 Future work
+===========
 
 * Add constructor-based injection
 
