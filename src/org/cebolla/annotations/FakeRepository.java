@@ -18,7 +18,7 @@ import java.lang.annotation.Target;
  * taking exactly one parameter of a type from which the test data class
  * inherits. In case of ambiguity, an error is thrown.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)

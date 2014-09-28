@@ -24,7 +24,7 @@ import java.lang.annotation.Target;
  * is injected at all locations. The same instance is also injected to points
  * annotated in the test-class with @see InjectFakeRepository.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

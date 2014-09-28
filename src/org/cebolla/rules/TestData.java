@@ -23,7 +23,7 @@ import org.junit.runners.model.Statement;
  * inject repositories in either the test-class or the class under
  * test.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class TestData implements MethodRule {
     private RepositoryRegister register = new RepositoryRegister();
@@ -93,7 +93,7 @@ public class TestData implements MethodRule {
     }
 
     /**
-     * @see MethodRule.apply
+     * {@inheritDoc}
      */
     @Override
     public Statement apply(final Statement statement, FrameworkMethod method,

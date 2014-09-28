@@ -14,7 +14,7 @@ import java.util.List;
  * dependencies in one command so that the developer need not do so by
  * hand.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public interface EntityBuilder<EntityType> {
     /**

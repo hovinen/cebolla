@@ -19,7 +19,7 @@ import com.google.common.base.Predicate;
 /**
  * This class extends @see AbstractFakeRepository with a simple lookup-method
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class AbstractFakeRepositoryWithSimpleLookup<Key, EntityType extends EntityWithKey<Key>>
 	extends AbstractFakeRepository<EntityType> {

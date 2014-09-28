@@ -21,7 +21,7 @@ import com.google.common.reflect.TypeToken;
  * This is a convenient base class to implement fake repositories. Fake
  * repositories can inherit from it to reduce boilerplate.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class AbstractFakeRepository<EntityType> {
     protected static final Predicate<Object> ALWAYS_TRUE = new Predicate<Object>() {

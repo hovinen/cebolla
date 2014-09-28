@@ -8,7 +8,7 @@ import org.reflections.Reflections;
  * This class allows the developer to specify in which package to search to 
  * find fake repositories.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  *
  */
 public class Cebolla {

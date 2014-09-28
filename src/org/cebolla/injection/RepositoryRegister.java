@@ -19,7 +19,7 @@ import com.google.common.collect.Iterables;
 import com.google.common.collect.Sets;
 
 /**
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class RepositoryRegister {
     private Map<Class<?>, Collection<Object>> repositories = new HashMap<>();

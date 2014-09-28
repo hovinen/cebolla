@@ -21,7 +21,7 @@ import com.google.common.base.Throwables;
 import com.google.common.collect.Iterables;
 
 /**
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class FakeRepositoryDiscoverer {
     private final Reflections reflections;

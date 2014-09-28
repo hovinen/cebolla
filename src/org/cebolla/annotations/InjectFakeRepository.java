@@ -23,7 +23,7 @@ import java.lang.annotation.Target;
  * The same instance of the fake repository is injected as into the class
  * under test with @see InjectRepositories.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

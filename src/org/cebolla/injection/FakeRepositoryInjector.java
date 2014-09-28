@@ -13,7 +13,7 @@ import com.google.common.base.Optional;
 import com.google.common.base.Throwables;
 
 /**
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class FakeRepositoryInjector {
     private final RepositoryRegister register;

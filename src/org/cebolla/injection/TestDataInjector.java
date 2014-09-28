@@ -15,7 +15,7 @@ import com.google.common.base.Throwables;
 import com.google.common.collect.Iterables;
 
 /**
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public class TestDataInjector {
     public void inject(Object repository, Object datum) {

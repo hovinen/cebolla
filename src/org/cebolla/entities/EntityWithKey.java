@@ -9,7 +9,7 @@ package org.cebolla.entities;
  * 
  * It specifies that an entity has a key with which one can look it up.
  * 
- * @author Bradford Hovinen <hovinen@gmail.com>
+ * @author Bradford Hovinen
  */
 public interface EntityWithKey<Key> {
     /**
