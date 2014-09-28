@@ -12,13 +12,10 @@ import org.cebolla.rules.repositories.TestRepository2;
 /**
  * @author Bradford Hovinen <hovinen@gmail.com>
  */
-@FakeRepository({ TestEntity2.class })
-public class FakeTestRepository2 extends
-	AbstractFakeRepositoryWithSimpleLookup<String, TestEntity2>
-	implements TestRepository2 {
-
+@FakeRepository(TestEntity2.class)
+public class FakeTestRepository2 extends AbstractFakeRepositoryWithSimpleLookup<String, TestEntity2> implements TestRepository2 {
     public FakeTestRepository2 with(TestEntity2 entity) {
-	add(entity);
-	return this;
+        add(entity);
+        return this;
     }
 }
