@@ -194,11 +194,11 @@ Finding fake repositories
 
 By default, Cebolla searches the entire classpath for classes with the annotation @FakeRepository, then checks the given list of classes for which domain-objects the fake repository accepts and injects the data with the method add. Searching the whole classpath is often quite slow and not really necessary in most cases. Thus Cebolla offers the ability to restrict the search to subpackages of a given package. One can specify this via a static method:
 
-    Cebolla.setFakeRepositoryPackage(/package name/);
+    Cebolla.setFakeRepositoryPackage(<package name>);
 
 or via the property cebolla.repository.package:
 
-    -Dcebolla.repository.package=/package name/
+    -Dcebolla.repository.package=<package name>
 
 Future work
 ===========
